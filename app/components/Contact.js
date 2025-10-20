@@ -15,7 +15,7 @@ export default function Contact() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-3xl md:text-5xl font-playfair font-semibold mb-6 md:mb-8 text-center text-[#d4af37] uppercase tracking-[0.2em]"
         >
-          Let's Connect
+          Let&apos;s Connect
         </motion.h2>
 
         <motion.div
@@ -71,7 +71,7 @@ export default function Contact() {
           viewport={{ once: true, margin: "0px" }}
         >
           <p className="text-gray-500 italic text-sm md:text-base leading-relaxed">
-            "Thank you for visiting my portfolio."
+            &ldquo;Thank you for visiting my portfolio.&rdquo;
           </p>
         </motion.div>
       </div>

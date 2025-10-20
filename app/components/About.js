@@ -35,7 +35,7 @@ export default function About() {
           <p className="md:first-letter:text-5xl md:first-letter:font-playfair md:first-letter:text-[#d4af37] md:first-letter:mr-1 md:first-letter:float-left text-center md:text-left">
             I am an undergraduate student majoring in Broadcasting and
             Television at Tiangong University, currently holding a GPA of
-            3.89/4.0 and honored with the President's First-Class Scholarship
+            3.89/4.0 and honored with the President&apos;s First-Class Scholarship
             for two consecutive years. I explore how visual storytelling,
             culture, and technology can work together to move audiences and
             preserve meaning. My journey has taken me through television

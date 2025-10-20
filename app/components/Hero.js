@@ -86,7 +86,7 @@ export default function Hero() {
           transition={{ duration: 1.5, delay: taglineDelay, ease: "easeOut" }}
           className="text-base md:text-lg text-gray-500 mb-12 md:mb-16 italic font-light max-w-2xl mx-auto leading-loose px-4"
         >
-          "Stories shape memory, and memory shapes culture."
+          &ldquo;Stories shape memory, and memory shapes culture.&rdquo;
         </motion.p>
 
         {/* Buttons - Soft Motion */}
