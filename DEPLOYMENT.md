@@ -27,6 +27,7 @@ git push -u origin main
 ```
 
 **Replace:**
+
 - `YOUR_USERNAME` with your GitHub username
 - `YOUR_REPO_NAME` with your repository name
 
@@ -141,6 +142,7 @@ After deployment:
 ### Build Fails
 
 **Error: Module not found**
+
 ```bash
 # Clear cache and reinstall
 rm -rf node_modules .next
@@ -149,16 +151,19 @@ pnpm build
 ```
 
 **Error: PostCSS configuration**
+
 - Already fixed: Using `@tailwindcss/postcss`
 - Configuration in `postcss.config.js`
 
 ### Deployment Issues
 
 **Fonts not loading**
+
 - Already optimized with `next/font/google`
 - No action needed
 
 **Animations not working**
+
 - Framer Motion already configured
 - Check browser compatibility
 
@@ -167,17 +172,20 @@ pnpm build
 ## Your Project is Ready! 🎉
 
 **Local Development:**
+
 ```bash
 pnpm dev
 ```
 
 **Production Build (test before deploy):**
+
 ```bash
 pnpm build
 pnpm start
 ```
 
 **Deploy to Vercel:**
+
 ```bash
 git push origin main
 # Automatic deployment triggers
@@ -195,4 +203,3 @@ git push origin main
 ---
 
 **Your portfolio is production-ready and optimized for Vercel deployment!** 🚀
-
