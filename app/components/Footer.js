@@ -15,14 +15,22 @@ export default function Footer() {
         >
           <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-6" />
 
-          <p className="text-sm text-gray-500 tracking-wide">
-            © {new Date().getFullYear()}{" "}
-            <span className="text-[#d4af37]">Jinyu Zhou</span>. All rights
-            reserved.
-          </p>
-          <p className="text-xs text-gray-600 mt-3 font-light">
-            Crafted with Next.js, TailwindCSS & Framer Motion
-          </p>
+              <p className="text-sm text-gray-500 tracking-wide">
+                © {new Date().getFullYear()}{" "}
+                <span className="text-[#d4af37]">Jinyu Zhou</span>. All rights
+                reserved.
+              </p>
+              <p className="text-xs text-gray-600 mt-3 font-light">
+                Crafted by{" "}
+                <a
+                  href="https://sameerbintaher.me"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#d4af37] hover:text-[#f4d03f] transition-colors duration-300 underline decoration-[#d4af37]/30 hover:decoration-[#f4d03f]"
+                >
+                  Sameer
+                </a>
+              </p>
         </motion.div>
       </div>
     </footer>
