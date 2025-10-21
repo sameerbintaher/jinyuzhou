@@ -16,75 +16,75 @@ export default function Hero() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Mobile: slower, more emotional timing
-  // Desktop: luxurious film opening
-  const nameDuration = isMobile ? 1.4 : 1.2;
-  const nameDelay = isMobile ? 0.6 : 0.5;
-  const subtitleDelay = isMobile ? 1.3 : 0.8;
-  const taglineDelay = isMobile ? 2.0 : 1.1;
-  const buttonDelay = isMobile ? 2.6 : 1.4;
-
   return (
     <section
       id="hero"
-      className="min-h-screen md:min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      style={{
+        paddingTop: "env(safe-area-inset-top, 0px)",
+        paddingBottom: "env(safe-area-inset-bottom, 0px)",
+      }}
     >
-      {/* Soft Parallax Background */}
+      {/* Soft Parallax Background - Desktop Only */}
       <motion.div
         style={{ y: isMobile ? 0 : y }}
-        initial={{ scale: 1.1, opacity: 0 }}
+        initial={{ scale: isMobile ? 1 : 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: isMobile ? 1.5 : 2.5, ease: "easeOut" }}
+        transition={{ duration: isMobile ? 0.8 : 2.5, ease: "easeOut" }}
         className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black"
       />
 
-      {/* Mobile Dark Overlay for Readability */}
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-[5]" />
+      {/* Strong Dark Gradient Overlay for Mobile Readability */}
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90 z-[5]" />
 
       <div className="relative z-10 text-center px-6 md:px-8 max-w-5xl mx-auto py-16 md:py-24">
         {/* Top Divider */}
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ duration: 1.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            duration: isMobile ? 0.4 : 1.4,
+            delay: isMobile ? 0.1 : 0.3,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           className="mb-10"
         >
           <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-12" />
         </motion.div>
 
-        {/* Name - Film Opening */}
+        {/* Name - Minimal fade on mobile, cinematic on desktop */}
         <motion.h1
-          initial={{ opacity: 0, y: isMobile ? 20 : 40 }}
+          initial={{ opacity: 0, y: isMobile ? 10 : 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: isMobile ? 0.8 : nameDuration,
-            delay: isMobile ? 0.3 : nameDelay,
+            duration: isMobile ? 0.5 : 1.2,
+            delay: isMobile ? 0.2 : 0.5,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="text-5xl md:text-8xl lg:text-9xl font-playfair font-bold mb-6 md:mb-8 text-[#d4af37] tracking-wider leading-tight"
           style={{
+            fontSize: isMobile ? "clamp(2.5rem, 12vw, 4rem)" : undefined,
             textShadow: isMobile
-              ? "0 2px 20px rgba(0,0,0,0.9), 0 4px 40px rgba(0,0,0,0.7)"
+              ? "0 3px 24px rgba(0,0,0,0.95), 0 6px 48px rgba(0,0,0,0.8)"
               : "none",
           }}
         >
           JINYU ZHOU
         </motion.h1>
 
-        {/* Subtitle - Individual Fade */}
+        {/* Subtitle - Minimal fade on mobile */}
         <motion.p
-          initial={{ opacity: 0, y: isMobile ? 15 : 25 }}
+          initial={{ opacity: 0, y: isMobile ? 8 : 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: isMobile ? 0.7 : 1.2,
-            delay: isMobile ? 0.6 : subtitleDelay,
+            duration: isMobile ? 0.5 : 1.2,
+            delay: isMobile ? 0.3 : 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="text-lg md:text-2xl text-gray-300 mb-5 md:mb-6 tracking-wide font-light leading-relaxed px-4 max-w-3xl mx-auto"
           style={{
-            textShadow: isMobile
-              ? "0 2px 12px rgba(0,0,0,0.8)"
-              : "none",
+            fontSize: isMobile ? "clamp(0.938rem, 4.5vw, 1.25rem)" : undefined,
+            textShadow: isMobile ? "0 2px 16px rgba(0,0,0,0.9)" : "none",
           }}
         >
           Broadcasting & Television <span className="text-[#d4af37]">|</span>{" "}
@@ -92,18 +92,19 @@ export default function Hero() {
           Storyteller
         </motion.p>
 
-        {/* Tagline - Poetic Fade */}
+        {/* Tagline - Minimal fade on mobile */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
-            duration: isMobile ? 0.8 : 1.5,
-            delay: isMobile ? 0.9 : taglineDelay,
+            duration: isMobile ? 0.5 : 1.5,
+            delay: isMobile ? 0.4 : 1.1,
             ease: "easeOut",
           }}
           className="text-base md:text-lg text-gray-500 mb-12 md:mb-16 italic font-light max-w-2xl mx-auto leading-loose px-4"
           style={{
-            textShadow: isMobile ? "0 1px 8px rgba(0,0,0,0.7)" : "none",
+            fontSize: isMobile ? "clamp(0.875rem, 3.8vw, 1rem)" : undefined,
+            textShadow: isMobile ? "0 2px 12px rgba(0,0,0,0.8)" : "none",
           }}
         >
           &ldquo;Stories shape memory, and memory shapes culture.&rdquo;
@@ -111,11 +112,11 @@ export default function Hero() {
 
         {/* Buttons - Soft Motion */}
         <motion.div
-          initial={{ opacity: 0, y: isMobile ? 10 : 15 }}
+          initial={{ opacity: 0, y: isMobile ? 8 : 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: isMobile ? 0.6 : 1,
-            delay: isMobile ? 1.2 : buttonDelay,
+            duration: isMobile ? 0.5 : 1,
+            delay: isMobile ? 0.5 : 1.4,
             ease: "easeOut",
           }}
           className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center items-center"
@@ -141,7 +142,11 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1.2, delay: 3, ease: "easeOut" }}
+        transition={{
+          duration: isMobile ? 0.5 : 1.2,
+          delay: isMobile ? 0.6 : 3,
+          ease: "easeOut",
+        }}
         className="absolute bottom-12 left-1/2 transform -translate-x-1/2"
       >
         <a

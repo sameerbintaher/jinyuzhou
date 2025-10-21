@@ -2,22 +2,47 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
+  const [showButton, setShowButton] = useState(false);
 
+  // Show button when scrolled down more than 200px
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 500) {
-        setIsVisible(true);
+      if (window.scrollY > 200) {
+        setShowButton(true);
       } else {
-        setIsVisible(false);
+        setShowButton(false);
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
+    toggleVisibility(); // Check initial position
+
     return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  // Hide button temporarily when scrolling (show when stopped)
+  useEffect(() => {
+    let scrollTimeout;
+    const handleScroll = () => {
+      setIsVisible(false);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsVisible(true);
+      }, 150);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    // Show initially
+    setIsVisible(true);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -29,17 +54,21 @@ export default function ScrollToTop() {
 
   return (
     <AnimatePresence>
-      {isVisible && (
+      {showButton && isVisible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.2 }}
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 p-3 md:p-4 min-h-[48px] min-w-[48px] flex items-center justify-center border border-[#d4af37] bg-black/90 backdrop-blur-md text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all duration-400 hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] hover:scale-[1.08] active:scale-[0.95]"
+          className="fixed z-50 w-14 h-14 rounded-full flex items-center justify-center glass-button text-[#d4af37] active:scale-95 transition-transform"
+          style={{
+            bottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))",
+            left: "calc(1.5rem + env(safe-area-inset-left, 0px))",
+          }}
           aria-label="Scroll to top"
         >
-          <ChevronUp size={24} className="md:w-6 md:h-6" />
+          <ArrowUp size={20} strokeWidth={2.5} />
         </motion.button>
       )}
     </AnimatePresence>

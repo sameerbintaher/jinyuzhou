@@ -10,22 +10,26 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import ViewportHeightFix from "./components/ViewportHeightFix";
 
 export default function Home() {
   return (
-    <main className="md:snap-none overflow-y-auto">
-      <Navbar />
-      <MobileMenu />
-      <Hero />
-      <About />
-      <Experience />
-      <Projects />
-      <Volunteer />
-      <Awards />
-      <Skills />
-      <Contact />
-      <Footer />
-      <ScrollToTop />
-    </main>
+    <>
+      <ViewportHeightFix />
+      <main className="md:snap-none overflow-y-auto">
+        <Navbar />
+        <MobileMenu />
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Volunteer />
+        <Awards />
+        <Skills />
+        <Contact />
+        <Footer />
+        <ScrollToTop />
+      </main>
+    </>
   );
 }

@@ -33,17 +33,22 @@ body {
   overflow-x: hidden;
 }
 
-/* Mobile Redesign - Smooth Natural Scrolling */
+/* Mobile Redesign - Smooth Natural Scrolling with --vh fix */
 @media (max-width: 768px) {
   html {
     scroll-padding-top: env(safe-area-inset-top, 80px);
     scroll-padding-bottom: env(safe-area-inset-bottom, 20px);
+    /* Use CSS custom property for viewport height */
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
   }
 
   body {
     -webkit-overflow-scrolling: touch;
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
   }
 
   /* Remove all scroll snap on mobile */
@@ -62,7 +67,13 @@ body {
     padding-bottom: clamp(3rem, 8vh, 5rem);
   }
 
-  /* Better mobile typography */
+  /* Hero uses --vh */
+  #hero {
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
+
+  /* Better mobile typography with clamp() */
   h1 {
     font-size: clamp(2rem, 10vw, 3.5rem) !important;
     line-height: 1.2 !important;
@@ -99,6 +110,20 @@ body {
   .grain-overlay {
     opacity: 0.015;
   }
+}
+
+/* Glass Morphism Utility Classes */
+.glass-button {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.glass-button:hover {
+  background: rgba(0, 0, 0, 0.75);
+  border-color: rgba(212, 175, 55, 0.5);
 }
 
 /* Smooth scroll with easing */
