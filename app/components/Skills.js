@@ -36,7 +36,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="h-screen md:min-h-screen flex items-start md:items-center justify-center pt-24 pb-16 md:py-32 px-6 bg-[#0a0a0a] snap-start snap-always overflow-y-auto md:overflow-visible"
+      className="min-h-screen flex items-center justify-center py-20 md:py-32 px-6 bg-[#0a0a0a]"
     >
       <div className="max-w-5xl mx-auto w-full">
         <motion.h2

@@ -27,18 +27,21 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="h-screen md:min-h-screen flex items-center justify-center relative overflow-hidden snap-start snap-always"
+      className="min-h-screen md:min-h-screen flex items-center justify-center relative overflow-hidden"
     >
       {/* Soft Parallax Background */}
       <motion.div
         style={{ y: isMobile ? 0 : y }}
         initial={{ scale: 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2.5, ease: "easeOut" }}
+        transition={{ duration: isMobile ? 1.5 : 2.5, ease: "easeOut" }}
         className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black"
       />
 
-      <div className="relative z-10 text-center px-6 md:px-8 max-w-5xl mx-auto py-12 md:py-24">
+      {/* Mobile Dark Overlay for Readability */}
+      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-[5]" />
+
+      <div className="relative z-10 text-center px-6 md:px-8 max-w-5xl mx-auto py-16 md:py-24">
         {/* Top Divider */}
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
@@ -51,28 +54,38 @@ export default function Hero() {
 
         {/* Name - Film Opening */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: isMobile ? 20 : 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: nameDuration,
-            delay: nameDelay,
+            duration: isMobile ? 0.8 : nameDuration,
+            delay: isMobile ? 0.3 : nameDelay,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="text-5xl md:text-8xl lg:text-9xl font-playfair font-bold mb-6 md:mb-8 text-[#d4af37] tracking-wider leading-tight"
+          style={{
+            textShadow: isMobile
+              ? "0 2px 20px rgba(0,0,0,0.9), 0 4px 40px rgba(0,0,0,0.7)"
+              : "none",
+          }}
         >
           JINYU ZHOU
         </motion.h1>
 
         {/* Subtitle - Individual Fade */}
         <motion.p
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: isMobile ? 15 : 25 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 1.2,
-            delay: subtitleDelay,
+            duration: isMobile ? 0.7 : 1.2,
+            delay: isMobile ? 0.6 : subtitleDelay,
             ease: [0.22, 1, 0.36, 1],
           }}
           className="text-lg md:text-2xl text-gray-300 mb-5 md:mb-6 tracking-wide font-light leading-relaxed px-4 max-w-3xl mx-auto"
+          style={{
+            textShadow: isMobile
+              ? "0 2px 12px rgba(0,0,0,0.8)"
+              : "none",
+          }}
         >
           Broadcasting & Television <span className="text-[#d4af37]">|</span>{" "}
           Content Creator <span className="text-[#d4af37]">|</span> Visual
@@ -83,31 +96,44 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: taglineDelay, ease: "easeOut" }}
+          transition={{
+            duration: isMobile ? 0.8 : 1.5,
+            delay: isMobile ? 0.9 : taglineDelay,
+            ease: "easeOut",
+          }}
           className="text-base md:text-lg text-gray-500 mb-12 md:mb-16 italic font-light max-w-2xl mx-auto leading-loose px-4"
+          style={{
+            textShadow: isMobile ? "0 1px 8px rgba(0,0,0,0.7)" : "none",
+          }}
         >
           &ldquo;Stories shape memory, and memory shapes culture.&rdquo;
         </motion.p>
 
         {/* Buttons - Soft Motion */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: isMobile ? 10 : 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: buttonDelay, ease: "easeOut" }}
+          transition={{
+            duration: isMobile ? 0.6 : 1,
+            delay: isMobile ? 1.2 : buttonDelay,
+            ease: "easeOut",
+          }}
           className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center items-center"
         >
-          <a
+          <motion.a
             href="#contact"
-            className="inline-block min-h-[48px] w-full sm:w-auto px-12 py-4 border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all duration-400 uppercase tracking-widest text-sm font-semibold hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-[1.02] active:scale-[0.98]"
+            whileTap={{ scale: 0.97 }}
+            className="inline-block min-h-[48px] w-full sm:w-auto px-12 py-4 border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all duration-300 uppercase tracking-widest text-sm font-semibold hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-[1.02] active:scale-[0.97]"
           >
             Contact Me
-          </a>
-          <a
+          </motion.a>
+          <motion.a
             href="#projects"
-            className="inline-block min-h-[48px] w-full sm:w-auto px-12 py-4 bg-[#d4af37] text-black hover:bg-[#f4d03f] transition-all duration-400 uppercase tracking-widest text-sm font-semibold hover:shadow-[0_0_30px_rgba(212,175,55,0.7)] hover:scale-[1.02] active:scale-[0.98]"
+            whileTap={{ scale: 0.97 }}
+            className="inline-block min-h-[48px] w-full sm:w-auto px-12 py-4 bg-[#d4af37] text-black hover:bg-[#f4d03f] transition-all duration-300 uppercase tracking-widest text-sm font-semibold hover:shadow-[0_0_30px_rgba(212,175,55,0.7)] hover:scale-[1.02] active:scale-[0.97]"
           >
             View Projects
-          </a>
+          </motion.a>
         </motion.div>
       </div>
 

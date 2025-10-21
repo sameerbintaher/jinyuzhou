@@ -6,7 +6,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="h-screen md:min-h-screen flex items-start md:items-center justify-center pt-24 pb-16 md:py-32 px-6 snap-start snap-always overflow-y-auto md:overflow-visible"
+      className="min-h-screen flex items-center justify-center py-20 md:py-32 px-6"
     >
       <div className="max-w-4xl mx-auto w-full">
         <motion.h2

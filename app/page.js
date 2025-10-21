@@ -13,7 +13,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 export default function Home() {
   return (
-    <main className="snap-y snap-mandatory md:snap-none overflow-y-scroll md:overflow-y-auto h-screen md:h-auto">
+    <main className="md:snap-none overflow-y-auto">
       <Navbar />
       <MobileMenu />
       <Hero />
