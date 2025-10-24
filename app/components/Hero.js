@@ -27,15 +27,23 @@ export default function Hero() {
     >
       {/* Soft Parallax Background - Desktop Only */}
       <motion.div
-        style={{ y: isMobile ? 0 : y }}
+        style={{
+          y: isMobile ? 0 : y,
+          background: "linear-gradient(to bottom, var(--bg), var(--bg-secondary), var(--bg))",
+        }}
         initial={{ scale: isMobile ? 1 : 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: isMobile ? 0.8 : 2.5, ease: "easeOut" }}
-        className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-black"
+        className="absolute inset-0"
       />
 
-      {/* Strong Dark Gradient Overlay for Mobile Readability */}
-      <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90 z-[5]" />
+      {/* Gradient Overlay for Mobile Readability - Theme Aware */}
+      <div
+        className="md:hidden absolute inset-0 z-[5]"
+        style={{
+          background: "linear-gradient(to bottom, var(--hero-overlay-start), var(--hero-overlay-mid), var(--hero-overlay-end))",
+        }}
+      />
 
       <div className="relative z-10 text-center px-6 md:px-8 max-w-5xl mx-auto py-16 md:py-24">
         {/* Top Divider */}
@@ -49,7 +57,12 @@ export default function Hero() {
           }}
           className="mb-10"
         >
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-12" />
+          <div
+            className="w-24 h-[1px] mx-auto mb-12"
+            style={{
+              backgroundImage: "linear-gradient(to right, transparent, var(--accent-gold), transparent)",
+            }}
+          />
         </motion.div>
 
         {/* Name - Minimal fade on mobile, cinematic on desktop */}
@@ -61,8 +74,9 @@ export default function Hero() {
             delay: isMobile ? 0.2 : 0.5,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="text-5xl md:text-8xl lg:text-9xl font-playfair font-bold mb-6 md:mb-8 text-[#d4af37] tracking-wider leading-tight"
+          className="text-5xl md:text-8xl lg:text-9xl font-playfair font-bold mb-6 md:mb-8 tracking-wider leading-tight"
           style={{
+            color: "var(--accent-gold)",
             fontSize: isMobile ? "clamp(2.5rem, 12vw, 4rem)" : undefined,
             textShadow: isMobile
               ? "0 3px 24px rgba(0,0,0,0.95), 0 6px 48px rgba(0,0,0,0.8)"
@@ -87,8 +101,8 @@ export default function Hero() {
             textShadow: isMobile ? "0 2px 16px rgba(0,0,0,0.9)" : "none",
           }}
         >
-          Broadcasting & Television <span className="text-[#d4af37]">|</span>{" "}
-          Content Creator <span className="text-[#d4af37]">|</span> Visual
+          Broadcasting & Television <span style={{ color: "var(--accent-gold)" }}>|</span>{" "}
+          Content Creator <span style={{ color: "var(--accent-gold)" }}>|</span> Visual
           Storyteller
         </motion.p>
 
@@ -124,14 +138,22 @@ export default function Hero() {
           <motion.a
             href="#contact"
             whileTap={{ scale: 0.97 }}
-            className="inline-block min-h-[48px] w-full sm:w-auto px-12 py-4 border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all duration-300 uppercase tracking-widest text-sm font-semibold hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-[1.02] active:scale-[0.97]"
+            className="inline-block min-h-[48px] w-full sm:w-auto px-12 py-4 border transition-all duration-300 uppercase tracking-widest text-sm font-semibold hover:scale-[1.02] active:scale-[0.97]"
+            style={{
+              borderColor: "var(--accent-gold)",
+              color: "var(--accent-gold)",
+            }}
           >
             Contact Me
           </motion.a>
           <motion.a
             href="#projects"
             whileTap={{ scale: 0.97 }}
-            className="inline-block min-h-[48px] w-full sm:w-auto px-12 py-4 bg-[#d4af37] text-black hover:bg-[#f4d03f] transition-all duration-300 uppercase tracking-widest text-sm font-semibold hover:shadow-[0_0_30px_rgba(212,175,55,0.7)] hover:scale-[1.02] active:scale-[0.97]"
+            className="inline-block min-h-[48px] w-full sm:w-auto px-12 py-4 transition-all duration-300 uppercase tracking-widest text-sm font-semibold hover:scale-[1.02] active:scale-[0.97]"
+            style={{
+              backgroundColor: "var(--accent-gold)",
+              color: "var(--bg)",
+            }}
           >
             View Projects
           </motion.a>
@@ -151,7 +173,8 @@ export default function Hero() {
       >
         <a
           href="#about"
-          className="text-[#d4af37] hover:text-[#f4d03f] transition-colors duration-300 block p-2"
+          className="transition-colors duration-300 block p-2"
+          style={{ color: "var(--accent-gold)" }}
           aria-label="Scroll to About section"
         >
           <ChevronDown className="animate-bounce" size={32} />

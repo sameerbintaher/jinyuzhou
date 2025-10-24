@@ -2,11 +2,19 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const navItems = [
     { name: "Home", href: "#hero" },
@@ -60,6 +68,10 @@ export default function MobileMenu() {
     }, 300);
   };
 
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
+
   return (
     <>
       {/* Glass Floating Menu Button - Bottom Right (Mobile Only) */}
@@ -71,7 +83,7 @@ export default function MobileMenu() {
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.2 }}
             onClick={() => setIsOpen(true)}
-            className="md:hidden fixed z-50 w-14 h-14 rounded-full flex items-center justify-center glass-button text-[#d4af37] active:scale-95 transition-transform"
+            className="md:hidden fixed z-50 w-14 h-14 rounded-full flex items-center justify-center glass-button text-[var(--accent-gold)] active:scale-95 transition-transform"
             style={{
               bottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))",
               right: "calc(1.5rem + env(safe-area-inset-right, 0px))",
@@ -83,17 +95,18 @@ export default function MobileMenu() {
         )}
       </AnimatePresence>
 
-      {/* Full-Screen Pure Black Overlay with Gold Links */}
+      {/* Full-Screen Overlay with Gold Links */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Pure Black Backdrop */}
+            {/* Backdrop - Theme Aware */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
-              className="md:hidden fixed inset-0 z-[100] bg-black"
+              className="md:hidden fixed inset-0 z-[100]"
+              style={{ backgroundColor: "var(--overlay-bg)" }}
               onClick={() => setIsOpen(false)}
             />
 
@@ -112,7 +125,7 @@ export default function MobileMenu() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
                 onClick={() => setIsOpen(false)}
-                className="absolute w-12 h-12 rounded-full flex items-center justify-center glass-button text-[#d4af37] active:scale-95 transition-transform"
+                className="absolute w-12 h-12 rounded-full flex items-center justify-center glass-button text-[var(--accent-gold)] active:scale-95 transition-transform"
                 style={{
                   top: "calc(1.5rem + env(safe-area-inset-top, 0px))",
                   right: "calc(1.5rem + env(safe-area-inset-right, 0px))",
@@ -122,6 +135,29 @@ export default function MobileMenu() {
                 <X size={18} strokeWidth={2.5} />
               </motion.button>
 
+              {/* Theme Toggle Button - Glass (Top Left) */}
+              {mounted && (
+                <motion.button
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.3, delay: 0.1 }}
+                  onClick={toggleTheme}
+                  className="absolute w-12 h-12 rounded-full flex items-center justify-center glass-button text-[var(--accent-gold)] active:scale-95 transition-transform"
+                  style={{
+                    top: "calc(1.5rem + env(safe-area-inset-top, 0px))",
+                    left: "calc(1.5rem + env(safe-area-inset-left, 0px))",
+                  }}
+                  aria-label="Toggle theme"
+                >
+                  {resolvedTheme === "dark" ? (
+                    <Sun size={18} strokeWidth={2.5} />
+                  ) : (
+                    <Moon size={18} strokeWidth={2.5} />
+                  )}
+                </motion.button>
+              )}
+
               {/* Gold Title */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -129,10 +165,10 @@ export default function MobileMenu() {
                 transition={{ duration: 0.4, delay: 0.15 }}
                 className="mb-12 text-center"
               >
-                <h2 className="text-2xl font-playfair font-bold text-[#d4af37] tracking-[0.3em]">
+                <h2 className="text-2xl font-playfair font-bold text-[var(--accent-gold)] tracking-[0.3em]">
                   MENU
                 </h2>
-                <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mt-3" />
+                <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-gold)] to-transparent mx-auto mt-3" />
               </motion.div>
 
               {/* Navigation Links - Gold */}
@@ -150,7 +186,11 @@ export default function MobileMenu() {
                       ease: [0.22, 1, 0.36, 1],
                     }}
                     whileTap={{ scale: 0.97 }}
-                    className="w-full text-center text-lg font-playfair text-gray-400 hover:text-[#d4af37] active:text-[#f4d03f] transition-colors duration-200 uppercase tracking-[0.25em] py-3 px-4 min-h-[48px] flex items-center justify-center border-b border-gray-900/50 hover:border-[#d4af37]/20"
+                    className="w-full text-center text-lg font-playfair hover:text-[var(--accent-gold-light)] active:text-[var(--accent-gold-light)] transition-colors duration-200 uppercase tracking-[0.25em] py-3 px-4 min-h-[48px] flex items-center justify-center border-b active:scale-95"
+                    style={{
+                      color: "var(--accent-gold)",
+                      borderColor: "var(--glass-border)",
+                    }}
                   >
                     {item.name}
                   </motion.a>
@@ -162,9 +202,10 @@ export default function MobileMenu() {
                 initial={{ opacity: 0, scaleX: 0 }}
                 animate={{ opacity: 1, scaleX: 1 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute bottom-8 w-12 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"
+                className="absolute bottom-8 w-12 h-[1px] bg-gradient-to-r from-transparent to-transparent"
                 style={{
                   bottom: "calc(2rem + env(safe-area-inset-bottom, 0px))",
+                  backgroundImage: "linear-gradient(to right, transparent, var(--accent-gold), transparent)",
                 }}
               />
             </motion.div>

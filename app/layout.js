@@ -1,5 +1,6 @@
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import ThemeProvider from "./components/ThemeProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,9 +27,11 @@ export default function RootLayout({ children }) {
       suppressHydrationWarning
     >
       <body>
-        {/* Grain/Noise Overlay */}
-        <div className="grain-overlay" aria-hidden="true" />
-        {children}
+        <ThemeProvider>
+          {/* Grain/Noise Overlay */}
+          <div className="grain-overlay" aria-hidden="true" />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -61,7 +61,7 @@ export default function ScrollToTop() {
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.2 }}
           onClick={scrollToTop}
-          className="fixed z-50 w-14 h-14 rounded-full flex items-center justify-center glass-button text-[#d4af37] active:scale-95 transition-transform"
+          className="fixed z-50 w-14 h-14 rounded-full flex items-center justify-center glass-button text-[var(--accent-gold)] active:scale-95 transition-transform"
           style={{
             bottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))",
             left: "calc(1.5rem + env(safe-area-inset-left, 0px))",

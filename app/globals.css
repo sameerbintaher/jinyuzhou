@@ -19,18 +19,60 @@
   scroll-behavior: smooth;
 }
 
+/* ===== THEME SYSTEM ===== */
+/* Dark Theme (Default - Cinematic Black & Gold) */
+:root,
+.dark {
+  --bg: #000000;
+  --bg-secondary: #0a0a0a;
+  --bg-tertiary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  --accent-gold: #d4af37;
+  --accent-gold-light: #f4d03f;
+  --accent-gold-dark: #b8941f;
+  --glass-bg: rgba(0, 0, 0, 0.6);
+  --glass-border: rgba(212, 175, 55, 0.3);
+  --overlay-bg: #000000;
+  --hero-overlay-start: rgba(0, 0, 0, 0.8);
+  --hero-overlay-mid: rgba(0, 0, 0, 0.7);
+  --hero-overlay-end: rgba(0, 0, 0, 0.9);
+}
+
+/* Light Theme (White + Gold Luxury Minimal) */
+.light {
+  --bg: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-tertiary: #f5f5f5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4b5563;
+  --text-muted: #9ca3af;
+  --accent-gold: #d4af37;
+  --accent-gold-light: #f4d03f;
+  --accent-gold-dark: #b8941f;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(212, 175, 55, 0.4);
+  --overlay-bg: #ffffff;
+  --hero-overlay-start: rgba(255, 255, 255, 0.3);
+  --hero-overlay-mid: rgba(255, 255, 255, 0.2);
+  --hero-overlay-end: rgba(255, 255, 255, 0.4);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
-  background-color: #000;
+  background-color: var(--bg);
+  transition: background-color 0.3s ease;
 }
 
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bg);
+  color: var(--text-primary);
   font-family: var(--font-inter);
   position: relative;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Mobile Redesign - Smooth Natural Scrolling with --vh fix */
@@ -112,18 +154,24 @@ body {
   }
 }
 
-/* Glass Morphism Utility Classes */
+/* Glass Morphism Utility Classes - Theme Aware */
 .glass-button {
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.light .glass-button {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .glass-button:hover {
-  background: rgba(0, 0, 0, 0.75);
-  border-color: rgba(212, 175, 55, 0.5);
+  background: var(--glass-bg);
+  border-color: var(--accent-gold);
+  opacity: 0.95;
 }
 
 /* Smooth scroll with easing */
