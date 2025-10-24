@@ -8,37 +8,39 @@ export default function Experience() {
     {
       title: "Student Affairs Assistant",
       company: "Tiangong University",
-      period: "2025 – Present",
+      period: "2025–Present",
       description:
-        "Supported international student services, records, and communication. Co-produced educational video content for official platforms. Helped organize ceremonies, cultural activities, and orientation events.",
+        "Supported international student services and video content production. Organized cultural and academic events. Helped manage communication and student affairs.",
     },
     {
       title: "Director's Assistant",
       company: 'CCTV "Voice" Program',
       period: "2024",
       description:
-        "Assisted with outdoor filming and on-site coordination for broadcast production. Participated in script refinement and topic planning. Supported digital content strategy to expand audience reach.",
+        "Supported outdoor filming and on-site coordination. Assisted script and topic development for broadcast segments. Participated in social media strategy for audience engagement.",
     },
     {
       title: "Editorial Intern",
       company: "China Railway Kunming Media Center",
       period: "2023",
       description:
-        "Edited, structured, and polished news manuscripts for clarity and impact. Used digital tools to improve visual storytelling and narrative flow. Delivered 42 completed news pieces, one selected for national broadcast.",
+        "Edited and structured news manuscripts. Enhanced visual narrative quality using digital tools. Delivered 42 completed news pieces, one selected for national broadcast.",
     },
   ];
 
   return (
     <section
       id="experience"
-      className="min-h-screen flex items-center justify-center py-20 md:py-32 px-6 bg-[#0a0a0a]"
+      className="min-h-screen flex items-center justify-center py-20 md:py-32 px-6"
+      style={{ backgroundColor: "var(--bg-secondary)" }}
     >
       <div className="max-w-5xl mx-auto w-full">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-3xl md:text-5xl font-playfair font-semibold mb-6 md:mb-8 text-center text-[#d4af37] uppercase tracking-[0.2em]"
+          className="text-3xl md:text-5xl font-playfair font-semibold mb-6 md:mb-8 text-center uppercase tracking-[0.2em]"
+          style={{ color: "var(--accent-gold)" }}
         >
           Experience
         </motion.h2>
@@ -47,7 +49,11 @@ export default function Experience() {
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="w-20 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-12 md:mb-20"
+          className="w-20 h-[1px] mx-auto mb-12 md:mb-20"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, transparent, var(--accent-gold), transparent)",
+          }}
         />
 
         <div className="space-y-8 md:space-y-16">
@@ -62,26 +68,40 @@ export default function Experience() {
                 ease: [0.22, 1, 0.36, 1],
               }}
               viewport={{ once: true, margin: "0px" }}
-              className="relative pl-10 border-l border-[#d4af37]/30 hover:border-[#d4af37] transition-colors duration-500"
+              className="relative pl-10 border-l transition-colors duration-500"
+              style={{
+                borderColor: "var(--divider)",
+              }}
             >
-              <div className="absolute -left-[5px] top-0 w-2 h-2 bg-[#d4af37] rounded-full" />
+              <div
+                className="absolute -left-[5px] top-0 w-2 h-2 rounded-full"
+                style={{ backgroundColor: "var(--accent-gold)" }}
+              />
 
               <div className="flex items-start gap-4 mb-2">
                 <Briefcase
-                  className="mt-1 flex-shrink-0 text-[#d4af37]"
+                  className="mt-1 flex-shrink-0"
                   size={24}
+                  style={{ color: "var(--accent-gold)" }}
                 />
-                <div>
-                  <h3 className="text-2xl font-playfair font-bold text-[#d4af37]">
+                <div className="flex-1">
+                  <h3
+                    className="text-2xl font-playfair font-bold"
+                    style={{ color: "var(--accent-gold)" }}
+                  >
                     {exp.title}
                   </h3>
-                  <p className="text-xl text-gray-400">{exp.company}</p>
-                  <p className="text-sm text-gray-500 mt-1">{exp.period}</p>
-                  <p className="text-gray-400 mt-4 leading-relaxed">
-                    {exp.description}
+                  <p className="text-xl" style={{ color: "var(--text-secondary)" }}>
+                    {exp.company}
                   </p>
                 </div>
               </div>
+              <p className="text-sm ml-10" style={{ color: "var(--text-muted)" }}>
+                {exp.period}
+              </p>
+              <p className="mt-4 ml-10 leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                {exp.description}
+              </p>
             </motion.div>
           ))}
         </div>

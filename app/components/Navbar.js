@@ -81,7 +81,10 @@ export default function Navbar() {
             </div>
 
             {/* Theme Toggle */}
-            <div className="pl-2 border-l" style={{ borderColor: "var(--glass-border)" }}>
+            <div
+              className="pl-2 border-l"
+              style={{ borderColor: "var(--glass-border)" }}
+            >
               <ThemeToggle variant="navbar" />
             </div>
           </div>

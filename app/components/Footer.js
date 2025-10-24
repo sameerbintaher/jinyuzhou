@@ -4,7 +4,13 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#d4af37]/20 py-12 bg-[#0a0a0a]">
+    <footer
+      className="border-t py-12"
+      style={{
+        backgroundColor: "var(--bg-secondary)",
+        borderColor: "var(--section-border)",
+      }}
+    >
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0 }}
@@ -13,20 +19,33 @@ export default function Footer() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mb-6" />
+          <div
+            className="w-12 h-[1px] mx-auto mb-6"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, transparent, var(--accent-gold), transparent)",
+            }}
+          />
 
-          <p className="text-sm text-gray-500 tracking-wide">
+          <p
+            className="text-sm tracking-wide"
+            style={{ color: "var(--text-muted)" }}
+          >
             © {new Date().getFullYear()}{" "}
-            <span className="text-[#d4af37]">Jinyu Zhou</span>. All rights
-            reserved.
+            <span style={{ color: "var(--accent-gold)" }}>Jinyu Zhou</span>. All
+            rights reserved.
           </p>
-          <p className="text-xs text-gray-600 mt-3 font-light">
+          <p
+            className="text-xs mt-3 font-light"
+            style={{ color: "var(--text-muted)" }}
+          >
             Crafted by{" "}
             <a
               href="https://sameerbintaher.me"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#d4af37] hover:text-[#f4d03f] transition-colors duration-300 underline decoration-[#d4af37]/30 hover:decoration-[#f4d03f]"
+              className="transition-colors duration-300 underline decoration-[var(--accent-gold)]/30 hover:decoration-[var(--accent-gold)]"
+              style={{ color: "var(--accent-gold)" }}
             >
               Sameer
             </a>

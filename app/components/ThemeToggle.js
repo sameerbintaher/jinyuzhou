@@ -36,7 +36,11 @@ export default function ThemeToggle({ variant = "navbar" }) {
               exit={{ opacity: 0, rotate: 90, scale: 0.6 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             >
-              <Sun size={18} strokeWidth={1.5} className="text-[var(--accent-gold)]" />
+              <Sun
+                size={18}
+                strokeWidth={1.5}
+                className="text-[var(--accent-gold)]"
+              />
             </motion.div>
           ) : (
             <motion.div
@@ -46,7 +50,11 @@ export default function ThemeToggle({ variant = "navbar" }) {
               exit={{ opacity: 0, rotate: -90, scale: 0.6 }}
               transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             >
-              <Moon size={18} strokeWidth={1.5} className="text-[var(--text-muted)]" />
+              <Moon
+                size={18}
+                strokeWidth={1.5}
+                className="text-[var(--text-muted)]"
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -77,7 +85,11 @@ export default function ThemeToggle({ variant = "navbar" }) {
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.2 }}
           >
-            <Sun size={18} strokeWidth={1.5} style={{ color: "var(--accent-gold)" }} />
+            <Sun
+              size={18}
+              strokeWidth={1.5}
+              style={{ color: "var(--accent-gold)" }}
+            />
           </motion.div>
         ) : (
           <motion.div
@@ -87,11 +99,14 @@ export default function ThemeToggle({ variant = "navbar" }) {
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.2 }}
           >
-            <Moon size={18} strokeWidth={1.5} style={{ color: "var(--text-muted)" }} />
+            <Moon
+              size={18}
+              strokeWidth={1.5}
+              style={{ color: "var(--text-muted)" }}
+            />
           </motion.div>
         )}
       </AnimatePresence>
     </button>
   );
 }
-

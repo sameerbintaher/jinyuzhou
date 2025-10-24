@@ -38,27 +38,35 @@
   --hero-overlay-start: rgba(0, 0, 0, 0.8);
   --hero-overlay-mid: rgba(0, 0, 0, 0.7);
   --hero-overlay-end: rgba(0, 0, 0, 0.9);
+  --section-border: rgba(212, 175, 55, 0.2);
+  --card-bg: #1a1a1a;
+  --card-border: rgba(255, 255, 255, 0.1);
+  --divider: rgba(212, 175, 55, 0.3);
 }
 
 /* Light Theme (Apple Soft Minimal - L1-B) */
 .light {
-  --bg: #fafafa;
-  --bg-secondary: #f2f2f2;
-  --bg-tertiary: #e5e5e5;
-  --text-primary: #111111;
-  --text-secondary: #333333;
-  --text-muted: #555555;
+  --bg: #ffffff;
+  --bg-secondary: #fafafa;
+  --bg-tertiary: #f5f5f5;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-muted: #86868b;
   --accent-gold: #d4af37;
   --accent-gold-light: #f4d03f;
   --accent-gold-dark: #b8941f;
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(229, 229, 229, 0.6);
-  --overlay-bg: #fafafa;
-  --hero-overlay-start: rgba(250, 250, 250, 0.5);
-  --hero-overlay-mid: rgba(250, 250, 250, 0.3);
-  --hero-overlay-end: rgba(250, 250, 250, 0.6);
-  --shadow-soft: 0 2px 16px rgba(0, 0, 0, 0.06);
-  --shadow-medium: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --overlay-bg: #ffffff;
+  --hero-overlay-start: rgba(255, 255, 255, 0.7);
+  --hero-overlay-mid: rgba(255, 255, 255, 0.5);
+  --hero-overlay-end: rgba(255, 255, 255, 0.8);
+  --shadow-soft: 0 2px 16px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --section-border: rgba(0, 0, 0, 0.06);
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.08);
+  --divider: rgba(0, 0, 0, 0.1);
 }
 
 html {
@@ -68,9 +76,9 @@ html {
   transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* Light mode gradient background */
+/* Light mode clean background */
 html.light {
-  background: linear-gradient(to bottom, #fafafa, #f2f2f2);
+  background: #ffffff;
 }
 
 body {
@@ -85,7 +93,7 @@ body {
 }
 
 body.light {
-  background: linear-gradient(to bottom, #fafafa, #f2f2f2);
+  background: #ffffff;
 }
 
 /* Mobile Redesign - Smooth Natural Scrolling with --vh fix */
