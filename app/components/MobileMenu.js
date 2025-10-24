@@ -2,19 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Menu, X } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
-
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const navItems = [
     { name: "Home", href: "#hero" },
@@ -68,10 +61,6 @@ export default function MobileMenu() {
     }, 300);
   };
 
-  const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
-  };
-
   return (
     <>
       {/* Glass Floating Menu Button - Bottom Right (Mobile Only) */}
@@ -81,30 +70,30 @@ export default function MobileMenu() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             onClick={() => setIsOpen(true)}
-            className="md:hidden fixed z-50 w-14 h-14 rounded-full flex items-center justify-center glass-button text-[var(--accent-gold)] active:scale-95 transition-transform"
+            className="md:hidden fixed z-50 w-14 h-14 rounded-full flex items-center justify-center glass-button text-[var(--accent-gold)] active:scale-95"
             style={{
               bottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))",
               right: "calc(1.5rem + env(safe-area-inset-right, 0px))",
             }}
             aria-label="Open menu"
           >
-            <Menu size={20} strokeWidth={2.5} />
+            <Menu size={20} strokeWidth={2} />
           </motion.button>
         )}
       </AnimatePresence>
 
-      {/* Full-Screen Overlay with Gold Links */}
+      {/* Full-Screen Overlay Drawer */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop - Theme Aware */}
+            {/* Backdrop - Theme Aware with Fade */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.4 }}
               className="md:hidden fixed inset-0 z-[100]"
               style={{ backgroundColor: "var(--overlay-bg)" }}
               onClick={() => setIsOpen(false)}
@@ -115,7 +104,7 @@ export default function MobileMenu() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
               className="md:hidden fixed inset-0 z-[110] flex flex-col items-center justify-center"
             >
               {/* Close Button - Glass */}
@@ -125,54 +114,40 @@ export default function MobileMenu() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
                 onClick={() => setIsOpen(false)}
-                className="absolute w-12 h-12 rounded-full flex items-center justify-center glass-button text-[var(--accent-gold)] active:scale-95 transition-transform"
+                className="absolute w-12 h-12 rounded-full flex items-center justify-center glass-button text-[var(--accent-gold)] active:scale-95"
                 style={{
                   top: "calc(1.5rem + env(safe-area-inset-top, 0px))",
                   right: "calc(1.5rem + env(safe-area-inset-right, 0px))",
                 }}
                 aria-label="Close menu"
               >
-                <X size={18} strokeWidth={2.5} />
+                <X size={18} strokeWidth={2} />
               </motion.button>
-
-              {/* Theme Toggle Button - Glass (Top Left) */}
-              {mounted && (
-                <motion.button
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  onClick={toggleTheme}
-                  className="absolute w-12 h-12 rounded-full flex items-center justify-center glass-button text-[var(--accent-gold)] active:scale-95 transition-transform"
-                  style={{
-                    top: "calc(1.5rem + env(safe-area-inset-top, 0px))",
-                    left: "calc(1.5rem + env(safe-area-inset-left, 0px))",
-                  }}
-                  aria-label="Toggle theme"
-                >
-                  {resolvedTheme === "dark" ? (
-                    <Sun size={18} strokeWidth={2.5} />
-                  ) : (
-                    <Moon size={18} strokeWidth={2.5} />
-                  )}
-                </motion.button>
-              )}
 
               {/* Gold Title */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.15 }}
-                className="mb-12 text-center"
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className="mb-8 text-center"
               >
-                <h2 className="text-2xl font-playfair font-bold text-[var(--accent-gold)] tracking-[0.3em]">
+                <h2
+                  className="text-2xl font-playfair font-bold tracking-[0.3em]"
+                  style={{ color: "var(--accent-gold)" }}
+                >
                   MENU
                 </h2>
-                <div className="w-12 h-[1px] bg-gradient-to-r from-transparent via-[var(--accent-gold)] to-transparent mx-auto mt-3" />
+                <div
+                  className="w-12 h-[1px] mx-auto mt-3"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(to right, transparent, var(--accent-gold), transparent)",
+                  }}
+                />
               </motion.div>
 
               {/* Navigation Links - Gold */}
-              <nav className="flex flex-col items-center space-y-3 px-6 max-w-sm w-full">
+              <nav className="flex flex-col items-center space-y-2 px-6 max-w-sm w-full mb-6">
                 {navItems.map((item, index) => (
                   <motion.a
                     key={item.name}
@@ -181,12 +156,12 @@ export default function MobileMenu() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
-                      duration: 0.3,
-                      delay: 0.1 * index + 0.2,
-                      ease: [0.22, 1, 0.36, 1],
+                      duration: 0.4,
+                      delay: 0.08 * index + 0.2,
+                      ease: [0.4, 0, 0.2, 1],
                     }}
                     whileTap={{ scale: 0.97 }}
-                    className="w-full text-center text-lg font-playfair hover:text-[var(--accent-gold-light)] active:text-[var(--accent-gold-light)] transition-colors duration-200 uppercase tracking-[0.25em] py-3 px-4 min-h-[48px] flex items-center justify-center border-b active:scale-95"
+                    className="w-full text-center text-lg font-playfair transition-colors duration-300 uppercase tracking-[0.25em] py-3 px-4 min-h-[48px] flex items-center justify-center border-b active:scale-95"
                     style={{
                       color: "var(--accent-gold)",
                       borderColor: "var(--glass-border)",
@@ -197,15 +172,26 @@ export default function MobileMenu() {
                 ))}
               </nav>
 
+              {/* Theme Toggle - Inside Drawer */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+                className="w-full max-w-sm px-6"
+              >
+                <ThemeToggle variant="menu" />
+              </motion.div>
+
               {/* Bottom Line */}
               <motion.div
                 initial={{ opacity: 0, scaleX: 0 }}
                 animate={{ opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute bottom-8 w-12 h-[1px] bg-gradient-to-r from-transparent to-transparent"
+                transition={{ duration: 0.5, delay: 0.7 }}
+                className="absolute bottom-8 w-12 h-[1px]"
                 style={{
                   bottom: "calc(2rem + env(safe-area-inset-bottom, 0px))",
-                  backgroundImage: "linear-gradient(to right, transparent, var(--accent-gold), transparent)",
+                  backgroundImage:
+                    "linear-gradient(to right, transparent, var(--accent-gold), transparent)",
                 }}
               />
             </motion.div>

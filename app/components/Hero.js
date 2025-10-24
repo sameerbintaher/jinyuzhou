@@ -29,7 +29,8 @@ export default function Hero() {
       <motion.div
         style={{
           y: isMobile ? 0 : y,
-          background: "linear-gradient(to bottom, var(--bg), var(--bg-secondary), var(--bg))",
+          background:
+            "linear-gradient(to bottom, var(--bg), var(--bg-secondary), var(--bg))",
         }}
         initial={{ scale: isMobile ? 1 : 1.1, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -41,7 +42,8 @@ export default function Hero() {
       <div
         className="md:hidden absolute inset-0 z-[5]"
         style={{
-          background: "linear-gradient(to bottom, var(--hero-overlay-start), var(--hero-overlay-mid), var(--hero-overlay-end))",
+          background:
+            "linear-gradient(to bottom, var(--hero-overlay-start), var(--hero-overlay-mid), var(--hero-overlay-end))",
         }}
       />
 
@@ -60,7 +62,8 @@ export default function Hero() {
           <div
             className="w-24 h-[1px] mx-auto mb-12"
             style={{
-              backgroundImage: "linear-gradient(to right, transparent, var(--accent-gold), transparent)",
+              backgroundImage:
+                "linear-gradient(to right, transparent, var(--accent-gold), transparent)",
             }}
           />
         </motion.div>
@@ -77,7 +80,7 @@ export default function Hero() {
           className="text-5xl md:text-8xl lg:text-9xl font-playfair font-bold mb-6 md:mb-8 tracking-wider leading-tight"
           style={{
             color: "var(--accent-gold)",
-            fontSize: isMobile ? "clamp(2.5rem, 12vw, 4rem)" : undefined,
+            fontSize: isMobile ? "clamp(2.25rem, 11vw, 3.5rem)" : undefined,
             textShadow: isMobile
               ? "0 3px 24px rgba(0,0,0,0.95), 0 6px 48px rgba(0,0,0,0.8)"
               : "none",
@@ -95,14 +98,17 @@ export default function Hero() {
             delay: isMobile ? 0.3 : 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="text-lg md:text-2xl text-gray-300 mb-5 md:mb-6 tracking-wide font-light leading-relaxed px-4 max-w-3xl mx-auto"
+          className="text-lg md:text-2xl mb-5 md:mb-6 tracking-wide font-light leading-relaxed px-4 max-w-3xl mx-auto"
           style={{
-            fontSize: isMobile ? "clamp(0.938rem, 4.5vw, 1.25rem)" : undefined,
+            color: "var(--text-secondary)",
+            fontSize: isMobile ? "clamp(0.938rem, 4.2vw, 1.125rem)" : undefined,
             textShadow: isMobile ? "0 2px 16px rgba(0,0,0,0.9)" : "none",
+            lineHeight: isMobile ? "1.6" : undefined,
           }}
         >
-          Broadcasting & Television <span style={{ color: "var(--accent-gold)" }}>|</span>{" "}
-          Content Creator <span style={{ color: "var(--accent-gold)" }}>|</span> Visual
+          Broadcasting & Television{" "}
+          <span style={{ color: "var(--accent-gold)" }}>|</span> Content Creator{" "}
+          <span style={{ color: "var(--accent-gold)" }}>|</span> Visual
           Storyteller
         </motion.p>
 
@@ -115,10 +121,12 @@ export default function Hero() {
             delay: isMobile ? 0.4 : 1.1,
             ease: "easeOut",
           }}
-          className="text-base md:text-lg text-gray-500 mb-12 md:mb-16 italic font-light max-w-2xl mx-auto leading-loose px-4"
+          className="text-base md:text-lg mb-12 md:mb-16 italic font-light max-w-2xl mx-auto leading-loose px-4"
           style={{
-            fontSize: isMobile ? "clamp(0.875rem, 3.8vw, 1rem)" : undefined,
+            color: "var(--text-muted)",
+            fontSize: isMobile ? "clamp(0.875rem, 3.6vw, 0.95rem)" : undefined,
             textShadow: isMobile ? "0 2px 12px rgba(0,0,0,0.8)" : "none",
+            lineHeight: isMobile ? "1.7" : undefined,
           }}
         >
           &ldquo;Stories shape memory, and memory shapes culture.&rdquo;
