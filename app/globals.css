@@ -47,20 +47,20 @@
 /* Light Theme (Apple Soft Minimal - L1-B) */
 .light {
   --bg: #ffffff;
-  --bg-secondary: #fafafa;
-  --bg-tertiary: #f5f5f5;
-  --text-primary: #1d1d1f;
-  --text-secondary: #6e6e73;
-  --text-muted: #86868b;
-  --accent-gold: #d4af37;
-  --accent-gold-light: #f4d03f;
+  --bg-secondary: #f8f8f8;
+  --bg-tertiary: #f0f0f0;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --text-muted: #6a6a6a;
+  --accent-gold: #c49a2e;
+  --accent-gold-light: #d4af37;
   --accent-gold-dark: #b8941f;
   --glass-bg: rgba(255, 255, 255, 0.85);
   --glass-border: rgba(0, 0, 0, 0.08);
   --overlay-bg: #ffffff;
-  --hero-overlay-start: rgba(255, 255, 255, 0.7);
-  --hero-overlay-mid: rgba(255, 255, 255, 0.5);
-  --hero-overlay-end: rgba(255, 255, 255, 0.8);
+  --hero-overlay-start: rgba(255, 255, 255, 0.85);
+  --hero-overlay-mid: rgba(255, 255, 255, 0.75);
+  --hero-overlay-end: rgba(255, 255, 255, 0.9);
   --shadow-soft: 0 2px 16px rgba(0, 0, 0, 0.04);
   --shadow-medium: 0 4px 24px rgba(0, 0, 0, 0.06);
   --section-border: rgba(0, 0, 0, 0.06);
@@ -94,6 +94,14 @@ body {
 
 body.light {
   background: #ffffff;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+/* Better text rendering for light mode */
+.light * {
+  text-rendering: optimizeLegibility;
+  font-weight: inherit;
 }
 
 /* Mobile Redesign - Smooth Natural Scrolling with --vh fix */
@@ -155,6 +163,17 @@ body.light {
   p {
     line-height: 1.75 !important;
     font-size: clamp(0.938rem, 4vw, 1.125rem) !important;
+  }
+
+  /* Light mode mobile text enhancement */
+  .light h1,
+  .light h2,
+  .light h3 {
+    font-weight: 600 !important;
+  }
+
+  .light p {
+    font-weight: 450 !important;
   }
 
   /* Lighter animations for performance */

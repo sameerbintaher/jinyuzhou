@@ -39,7 +39,10 @@ export default function Contact() {
           className="mb-10 md:mb-14 max-w-2xl mx-auto"
         >
           <div className="space-y-3 md:space-y-4 text-base md:text-lg">
-            <p className="leading-loose" style={{ color: "var(--text-secondary)" }}>
+            <p
+              className="leading-loose"
+              style={{ color: "var(--text-secondary)" }}
+            >
               <span
                 className="font-semibold"
                 style={{ color: "var(--accent-gold)" }}
@@ -54,7 +57,10 @@ export default function Contact() {
                 zhoujinyu1019@163.com
               </a>
             </p>
-            <p className="leading-loose" style={{ color: "var(--text-secondary)" }}>
+            <p
+              className="leading-loose"
+              style={{ color: "var(--text-secondary)" }}
+            >
               <span
                 className="font-semibold"
                 style={{ color: "var(--accent-gold)" }}

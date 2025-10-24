@@ -91,15 +91,24 @@ export default function Experience() {
                   >
                     {exp.title}
                   </h3>
-                  <p className="text-xl" style={{ color: "var(--text-secondary)" }}>
+                  <p
+                    className="text-xl"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     {exp.company}
                   </p>
                 </div>
               </div>
-              <p className="text-sm ml-10" style={{ color: "var(--text-muted)" }}>
+              <p
+                className="text-sm ml-10"
+                style={{ color: "var(--text-muted)" }}
+              >
                 {exp.period}
               </p>
-              <p className="mt-4 ml-10 leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              <p
+                className="mt-4 ml-10 leading-relaxed"
+                style={{ color: "var(--text-secondary)" }}
+              >
                 {exp.description}
               </p>
             </motion.div>

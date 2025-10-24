@@ -76,11 +76,17 @@ export default function Projects() {
                 >
                   {project.title}
                 </h3>
-                <p className="text-sm mt-2" style={{ color: "var(--accent-gold)" }}>
+                <p
+                  className="text-sm mt-2"
+                  style={{ color: "var(--accent-gold)" }}
+                >
                   {project.role} | {project.period}
                 </p>
               </div>
-              <p className="leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              <p
+                className="leading-relaxed"
+                style={{ color: "var(--text-secondary)" }}
+              >
                 {project.description}
               </p>
               {project.tech && (

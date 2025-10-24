@@ -46,21 +46,23 @@ export default function About() {
             >
               I
             </span>{" "}
-            am an undergraduate student majoring in Broadcasting and Television at
-            Tiangong University, currently holding a GPA of 3.89/4.0 and honored with the
-            President&apos;s First-Class Scholarship for two consecutive years. I explore
-            how visual storytelling, culture, and technology can work together to move
-            audiences and preserve meaning. My journey has taken me through television
-            studios, media centers, cultural projects, VR exhibition work, and volunteer
-            teaching abroad — all shaping me into a storyteller who values empathy,
-            clarity, and human connection.
+            am an undergraduate student majoring in Broadcasting and Television
+            at Tiangong University, currently holding a GPA of 3.89/4.0 and
+            honored with the President&apos;s First-Class Scholarship for two
+            consecutive years. I explore how visual storytelling, culture, and
+            technology can work together to move audiences and preserve meaning.
+            My journey has taken me through television studios, media centers,
+            cultural projects, VR exhibition work, and volunteer teaching abroad
+            — all shaping me into a storyteller who values empathy, clarity, and
+            human connection.
           </p>
 
           <p className="text-center md:text-left">
-            I believe that stories—whether captured through a camera lens, a broadcast
-            script, or an immersive digital space—have the power to bridge worlds. I am
-            continuously learning, creating, and searching for new ways to communicate
-            emotion, memory, and culture through media.
+            I believe that stories—whether captured through a camera lens, a
+            broadcast script, or an immersive digital space—have the power to
+            bridge worlds. I am continuously learning, creating, and searching
+            for new ways to communicate emotion, memory, and culture through
+            media.
           </p>
         </motion.div>
       </div>

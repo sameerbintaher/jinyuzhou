@@ -81,13 +81,22 @@ export default function Volunteer() {
                   >
                     {vol.role}
                   </h3>
-                  <p className="text-xl" style={{ color: "var(--text-secondary)" }}>
+                  <p
+                    className="text-xl"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     {vol.organization}
                   </p>
-                  <p className="text-sm mt-1" style={{ color: "var(--text-muted)" }}>
+                  <p
+                    className="text-sm mt-1"
+                    style={{ color: "var(--text-muted)" }}
+                  >
                     {vol.period}
                   </p>
-                  <p className="mt-4 leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                  <p
+                    className="mt-4 leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     {vol.description}
                   </p>
                 </div>
@@ -107,7 +116,8 @@ export default function Volunteer() {
             className="text-base md:text-lg italic leading-loose md:leading-relaxed max-w-3xl mx-auto px-4"
             style={{ color: "var(--text-secondary)" }}
           >
-            These experiences deepened my belief that empathy is the beginning of understanding.
+            These experiences deepened my belief that empathy is the beginning
+            of understanding.
           </p>
         </motion.div>
       </div>

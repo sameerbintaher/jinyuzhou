@@ -97,10 +97,16 @@ export default function Awards() {
                   >
                     {award.title}
                   </h3>
-                  <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+                  <p
+                    className="text-sm"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
                     {award.issuer}
                   </p>
-                  <p className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>
+                  <p
+                    className="text-xs mt-1"
+                    style={{ color: "var(--text-muted)" }}
+                  >
                     {award.year}
                   </p>
                 </div>

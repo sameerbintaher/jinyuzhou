@@ -3,18 +3,24 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 export default function Hero() {
   const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 150]);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
+    setMounted(true);
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const isLightMode = mounted && resolvedTheme === "light";
 
   return (
     <section
@@ -81,9 +87,10 @@ export default function Hero() {
           style={{
             color: "var(--accent-gold)",
             fontSize: isMobile ? "clamp(2.25rem, 11vw, 3.5rem)" : undefined,
-            textShadow: isMobile
-              ? "0 3px 24px rgba(0,0,0,0.95), 0 6px 48px rgba(0,0,0,0.8)"
-              : "none",
+            textShadow:
+              isMobile && !isLightMode
+                ? "0 3px 24px rgba(0,0,0,0.95), 0 6px 48px rgba(0,0,0,0.8)"
+                : "none",
           }}
         >
           JINYU ZHOU
@@ -102,8 +109,10 @@ export default function Hero() {
           style={{
             color: "var(--text-secondary)",
             fontSize: isMobile ? "clamp(0.938rem, 4.2vw, 1.125rem)" : undefined,
-            textShadow: isMobile ? "0 2px 16px rgba(0,0,0,0.9)" : "none",
+            textShadow:
+              isMobile && !isLightMode ? "0 2px 16px rgba(0,0,0,0.9)" : "none",
             lineHeight: isMobile ? "1.6" : undefined,
+            fontWeight: isLightMode ? "500" : undefined,
           }}
         >
           Broadcasting & Television{" "}
@@ -125,7 +134,8 @@ export default function Hero() {
           style={{
             color: "var(--text-muted)",
             fontSize: isMobile ? "clamp(0.875rem, 3.6vw, 0.95rem)" : undefined,
-            textShadow: isMobile ? "0 2px 12px rgba(0,0,0,0.8)" : "none",
+            textShadow:
+              isMobile && !isLightMode ? "0 2px 12px rgba(0,0,0,0.8)" : "none",
             lineHeight: isMobile ? "1.7" : undefined,
           }}
         >
@@ -160,7 +170,7 @@ export default function Hero() {
             className="inline-block min-h-[48px] w-full sm:w-auto px-12 py-4 transition-all duration-300 uppercase tracking-widest text-sm font-semibold hover:scale-[1.02] active:scale-[0.97]"
             style={{
               backgroundColor: "var(--accent-gold)",
-              color: "var(--bg)",
+              color: isLightMode ? "#ffffff" : "var(--bg)",
             }}
           >
             View Projects
